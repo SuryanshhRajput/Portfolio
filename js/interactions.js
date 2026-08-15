@@ -1,5 +1,5 @@
 /**
- * Interactions & Visual Polish
+ * Interactions, Mobile Navigation & Visual Polish
  * Suryansh Singh — Developer Portfolio
  */
 
@@ -10,9 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll("main section[id]");
 
-  // 1. Mobile Menu Toggle
+  // 1. Mobile Menu Toggle & Accessibility
   if (navToggle && siteNav) {
-    navToggle.addEventListener("click", () => {
+    const closeMobileNav = () => {
+      if (siteNav.classList.contains("is-open")) {
+        siteNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+    };
+
+    navToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
       const isOpen = siteNav.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
       document.body.style.overflow = isOpen ? "hidden" : "";
@@ -21,12 +30,33 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close on nav link click
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        if (siteNav.classList.contains("is-open")) {
-          siteNav.classList.remove("is-open");
-          navToggle.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "";
-        }
+        closeMobileNav();
       });
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (e) => {
+      if (
+        siteNav.classList.contains("is-open") &&
+        !siteNav.contains(e.target) &&
+        !navToggle.contains(e.target)
+      ) {
+        closeMobileNav();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && siteNav.classList.contains("is-open")) {
+        closeMobileNav();
+      }
+    });
+
+    // Reset on viewport resize above mobile breakpoint
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860 && siteNav.classList.contains("is-open")) {
+        closeMobileNav();
+      }
     });
   }
 

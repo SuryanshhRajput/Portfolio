@@ -12,8 +12,10 @@ A responsive portfolio foundation built in plain HTML, CSS, and vanilla JavaScri
 ## Notes
 
 This is the foundation phase of the portfolio. The next chunk will replace placeholder project data and expand the interactive experience with richer content and project previews.
-
-1. https://suryansh-productivity-dashboard.vercel.app/
-2. https://suryansh-singh-responsive-landing-p.vercel.app/
-
+ 
 # Portfolio
+
+
+github :  https://github.com/SuryanshhRajput
+codlio :  https://codolio.com/profile/Suryanshh
+linkedin : https://www.linkedin.com/in/suryanshhsingh/
