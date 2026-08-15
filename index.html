@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Suryansh Singh — Computer Science Engineering student and Frontend / Full-Stack Developer. Portfolio featuring featured freelance work and deployed applications."
+    />
+    <title>Suryansh Singh — Frontend / Full-Stack Developer</title>
+
+    <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- Ambient Background Glow & Geometric Grid Canvas -->
+    <div class="ambient-canvas" aria-hidden="true">
+      <div class="glow-sphere glow-1"></div>
+      <div class="glow-sphere glow-2"></div>
+      <div class="ambient-grid"></div>
+    </div>
+
+    <div class="page-shell">
+      <!-- Floating Navigation Bar -->
+      <header class="site-header" id="header">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#home" class="brand" aria-label="Suryansh Singh — Home">
+              <span class="brand-monogram">SS</span>
+              <span class="brand-name">Suryansh Singh</span>
+            </a>
+
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+              <a href="#home" class="nav-link active">Home</a>
+              <a href="#work" class="nav-link">Work</a>
+              <a href="#about" class="nav-link">About</a>
+              <a href="#skills" class="nav-link">Skills</a>
+              <a href="#journey" class="nav-link">Journey</a>
+              <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+              <a href="#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+              <button
+                class="nav-toggle"
+                id="nav-toggle"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="site-nav"
+              >
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="section hero-section">
+          <div class="container">
+            <div class="hero-layout">
+              <div class="hero-content">
+                <div class="status-pill">
+                  <span class="pulse-dot"></span>
+                  <span>Available for Full-Stack &amp; Frontend Roles</span>
+                </div>
+
+                <h1 class="hero-title">
+                  Engineering modern, high-performance <span class="gradient-text">web applications</span>.
+                </h1>
+
+                <p class="hero-lead">
+                  I am a Computer Science Engineering student at <strong>Bennett University</strong> transitioning from
+                  <strong>Frontend</strong> to <strong>Full-Stack</strong> development. Focused on React, TypeScript, Node.js,
+                  and scalable interface architecture.
+                </p>
+
+                <div class="hero-ctas">
+                  <a href="#work" class="btn btn-primary">
+                    <span>Explore My Work</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                  <a href="#contact" class="btn btn-secondary">
+                    <span>Contact Me</span>
+                  </a>
+                </div>
+
+                <div class="hero-socials">
+                  <a href="https://github.com/Suryanshsingh986" target="_blank" rel="noopener noreferrer" class="social-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span>GitHub</span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/suryanshhsingh/" target="_blank" rel="noopener noreferrer" class="social-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href="https://codolio.com/profile/Suryanshh_1" target="_blank" rel="noopener noreferrer" class="social-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>Codolio</span>
+                  </a>
+                  <button type="button" class="social-badge copy-email-btn" data-email="suryanshhsingh986@gmail.com" title="Click to copy email">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Copy Email</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Interactive Hero Visual -->
+              <div class="hero-visual">
+                <div class="sandbox-window">
+                  <div class="sandbox-header">
+                    <div class="sandbox-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <span class="sandbox-title">suryansh.config.ts</span>
+                    <div class="sandbox-status">
+                      <span class="live-blink"></span>
+                      <span>Production</span>
+                    </div>
+                  </div>
+                  <div class="sandbox-body">
+                    <div class="code-matrix">
+                      <div class="code-row">
+                        <span class="c-dim">01</span>
+                        <span class="c-key">const</span> <span class="c-ident">developer</span> = {
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">02</span>
+                        &nbsp;&nbsp;name: <span class="c-str">'Suryansh Singh'</span>,
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">03</span>
+                        &nbsp;&nbsp;university: <span class="c-str">'Bennett University'</span>,
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">04</span>
+                        &nbsp;&nbsp;major: <span class="c-str">'Computer Science Engineering'</span>,
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">05</span>
+                        &nbsp;&nbsp;stack: [<span class="c-str">'React'</span>, <span class="c-str">'TypeScript'</span>, <span class="c-str">'Node.js'</span>],
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">06</span>
+                        &nbsp;&nbsp;focus: <span class="c-str">'Full-Stack Architecture'</span>,
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">07</span>
+                        &nbsp;&nbsp;status: <span class="c-str">'Open for Roles'</span>
+                      </div>
+                      <div class="code-row">
+                        <span class="c-dim">08</span>
+                        };
+                      </div>
+                    </div>
+
+                    <div class="matrix-pills-row">
+                      <div class="matrix-pill">
+                        <span class="m-dot"></span>
+                        <strong>Frontend</strong>
+                        <span>React &amp; TypeScript</span>
+                      </div>
+                      <div class="matrix-arrow">→</div>
+                      <div class="matrix-pill active">
+                        <span class="m-dot"></span>
+                        <strong>Backend</strong>
+                        <span>Node.js APIs</span>
+                      </div>
+                      <div class="matrix-arrow">→</div>
+                      <div class="matrix-pill highlight">
+                        <span class="m-dot"></span>
+                        <strong>Full Stack</strong>
+                        <span>Production Deployments</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Work Section (Encompassing Featured Freelance Work & Selected Development Work) -->
+        <section id="work" class="section work-section">
+          <div class="container">
+            <!-- 1. Featured Freelance Work Section -->
+            <div class="freelance-section-block">
+              <div class="section-header split-header">
+                <div>
+                  <span class="section-tag">[ 01 // CLIENT &amp; COMMERCIAL IMPLEMENTATION ]</span>
+                  <h2 class="section-title">Featured Freelance Work</h2>
+                </div>
+                <div class="section-meta-wrapper">
+                  <p class="section-description">
+                    Real-world digital experiences I built for businesses — combining Shopify development, custom UI, responsive design, and hands-on implementation.
+                  </p>
+                  <div class="project-counter-badge">
+                    <span class="badge-dot"></span>
+                    <span>3 Client Projects</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Freelance Showcase (Populated dynamically via JS) -->
+              <div id="freelance-grid" class="freelance-showcase-layout" aria-live="polite">
+                <!-- Dynamically populated freelance cards: Glasseria flagship hero card + 2-col secondary cards -->
+              </div>
+            </div>
+
+            <!-- 2. Selected Development Projects Section -->
+            <div class="dev-projects-section-block" style="margin-top: 6rem;">
+              <div class="section-header split-header">
+                <div>
+                  <span class="section-tag">[ 02 // DEVELOPMENT LAB &amp; EXPERIMENTS ]</span>
+                  <h2 class="section-title">Development Projects</h2>
+                </div>
+                <div class="section-meta-wrapper">
+                  <p class="section-description">
+                    A curated catalog of interactive applications, dashboards, clones, and interface experiments built while mastering full-stack engineering.
+                  </p>
+                  <div class="project-counter-badge">
+                    <span class="badge-dot"></span>
+                    <span id="project-count">15</span>
+                    <span>Projects Deployed</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Curated Editorial Grid (Populated dynamically via JS) -->
+              <div id="project-grid" class="editorial-grid" aria-live="polite">
+                <!-- Dynamically populated development cards -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-tag">[ 03 // IDENTITY &amp; PHILOSOPHY ]</span>
+              <h2 class="section-title">Crafting interfaces with engineering discipline.</h2>
+            </div>
+
+            <div class="about-grid">
+              <div class="about-narrative">
+                <p class="about-p lead-p">
+                  I am a Computer Science Engineering student at <strong>Bennett University</strong> who believes that the best way to understand software is to construct it from first principles.
+                </p>
+                <p class="about-p">
+                  My technical path started with foundational semantic HTML and pure CSS architecture, advancing through modern Tailwind utility systems and deep JavaScript DOM manipulation. After mastering reactive state patterns and strict typing with <strong>React</strong> and <strong>TypeScript</strong>, I have expanded into backend services and Node.js API development.
+                </p>
+                <p class="about-p">
+                  Rather than consuming tutorials passively, I build functional, deployed interfaces that solve practical UX challenges. Every project is an opportunity to refine visual pacing, maintainable code structures, and real-world system behavior.
+                </p>
+
+                <!-- Technical Duality Card -->
+                <div class="duality-card">
+                  <div class="duality-header">
+                    <span class="duality-title">Engineering + Design Mindset</span>
+                  </div>
+                  <div class="duality-columns">
+                    <div class="duality-col">
+                      <span class="col-tag">Frontend &amp; UX</span>
+                      <ul>
+                        <li>Fluid responsive layouts</li>
+                        <li>Design token systems &amp; CSS architecture</li>
+                        <li>Type-safe component patterns</li>
+                        <li>Micro-interactions &amp; motion choreography</li>
+                      </ul>
+                    </div>
+                    <div class="duality-divider" aria-hidden="true">
+                      <span>&amp;</span>
+                    </div>
+                    <div class="duality-col">
+                      <span class="col-tag">Systems &amp; Backend</span>
+                      <ul>
+                        <li>Node.js API &amp; route design</li>
+                        <li>State management &amp; persistence</li>
+                        <li>Async workflows &amp; data validation</li>
+                        <li>Algorithmic problem solving</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Sidebar Card -->
+              <div class="about-profile-card">
+                <div class="profile-card-header">
+                  <div class="profile-avatar">SS</div>
+                  <div>
+                    <h3 class="profile-name">Suryansh Singh</h3>
+                    <p class="profile-subtitle">Computer Science Engineering</p>
+                  </div>
+                </div>
+
+                <div class="profile-details-list">
+                  <div class="profile-detail-item">
+                    <span class="detail-label">Institution</span>
+                    <span class="detail-value">Bennett University</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-label">Degree</span>
+                    <span class="detail-value">B.Tech Computer Science</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-label">Current Direction</span>
+                    <span class="detail-value highlight-val">Frontend → Full-Stack</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-label">Core Specialization</span>
+                    <span class="detail-value">React, TypeScript, Modern UI</span>
+                  </div>
+                  <div class="profile-detail-item">
+                    <span class="detail-label">Location</span>
+                    <span class="detail-value">India</span>
+                  </div>
+                </div>
+
+                <div class="profile-metrics-row">
+                  <div class="metric-box">
+                    <span class="metric-number">19+</span>
+                    <span class="metric-name">Deployed Sites</span>
+                  </div>
+                  <div class="metric-box">
+                    <span class="metric-number">150+</span>
+                    <span class="metric-name">DSA Solved</span>
+                  </div>
+                  <div class="metric-box">
+                    <span class="metric-number">100%</span>
+                    <span class="metric-name">Hands-On Build</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-tag">[ 04 // TECHNICAL CRAFT ]</span>
+              <h2 class="section-title">A focused, evolving stack.</h2>
+              <p class="section-description">
+                Grounded in modern frontend engineering and actively expanding across backend systems and developer workflows.
+              </p>
+            </div>
+
+            <div class="skills-showcase">
+              <!-- Primary Frontend -->
+              <div class="skill-category-card">
+                <div class="skill-card-head">
+                  <div class="skill-head-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  </div>
+                  <div>
+                    <h3 class="skill-category-title">Primary Frontend</h3>
+                    <p class="skill-category-desc">Core client-side execution &amp; component architecture</p>
+                  </div>
+                </div>
+                <div class="skill-tags-cloud">
+                  <div class="skill-pill highlight-pill">
+                    <span class="pill-dot"></span>
+                    <strong>React</strong>
+                    <span class="pill-role">Component Architecture</span>
+                  </div>
+                  <div class="skill-pill highlight-pill">
+                    <span class="pill-dot"></span>
+                    <strong>TypeScript</strong>
+                    <span class="pill-role">Type Safety &amp; Generics</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>JavaScript</strong>
+                    <span class="pill-role">ES6+, DOM &amp; Async</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>HTML5</strong>
+                    <span class="pill-role">Semantic Structure</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>CSS3</strong>
+                    <span class="pill-role">Grid, Flexbox, Animations</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>Tailwind CSS</strong>
+                    <span class="pill-role">Design Tokens &amp; Utility UI</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Backend & Current Learning -->
+              <div class="skill-category-card">
+                <div class="skill-card-head">
+                  <div class="skill-head-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                  </div>
+                  <div>
+                    <h3 class="skill-category-title">Backend &amp; Current Learning</h3>
+                    <p class="skill-category-desc">Server-side logic, routing, and data flow</p>
+                  </div>
+                </div>
+                <div class="skill-tags-cloud">
+                  <div class="skill-pill highlight-pill">
+                    <span class="pill-dot"></span>
+                    <strong>Node.js</strong>
+                    <span class="pill-role">Server Runtime</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>Backend Development</strong>
+                    <span class="pill-role">Server Logic &amp; Middleware</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>RESTful APIs</strong>
+                    <span class="pill-role">HTTP Methods &amp; Payloads</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>JSON &amp; Data Models</strong>
+                    <span class="pill-role">Payload Schema</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tools & Ecosystem -->
+              <div class="skill-category-card">
+                <div class="skill-card-head">
+                  <div class="skill-head-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                  </div>
+                  <div>
+                    <h3 class="skill-category-title">Tools &amp; Ecosystem</h3>
+                    <p class="skill-category-desc">Version control, environment &amp; deployment pipelines</p>
+                  </div>
+                </div>
+                <div class="skill-tags-cloud">
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>Git</strong>
+                    <span class="pill-role">Version Control</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>GitHub</strong>
+                    <span class="pill-role">Collaboration &amp; CI</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>VS Code</strong>
+                    <span class="pill-role">Development Environment</span>
+                  </div>
+                  <div class="skill-pill">
+                    <span class="pill-dot"></span>
+                    <strong>Vercel</strong>
+                    <span class="pill-role">Edge Deployment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="section journey-section">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-tag">[ 05 // THE LEARNING PROGRESSION ]</span>
+              <h2 class="section-title">Journey</h2>
+              <p class="section-description">
+                A progressive learning path from foundational interfaces to production full-stack systems.
+              </p>
+            </div>
+
+            <div class="timeline-container">
+              <div class="timeline-line" aria-hidden="true"></div>
+
+              <!-- Step 1 -->
+              <div class="timeline-step-item">
+                <div class="step-marker">01</div>
+                <div class="step-card">
+                  <div class="step-meta">Foundations</div>
+                  <h3 class="step-title">Semantic Structure &amp; Layout Systems</h3>
+                  <p class="step-desc">
+                    Started with pure HTML5 semantic document structure and standard CSS. Mastered Flexbox, CSS Grid systems, custom properties, responsive design principles, and utility workflows with Tailwind CSS.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="timeline-step-item">
+                <div class="step-marker">02</div>
+                <div class="step-card">
+                  <div class="step-meta">Core Logic</div>
+                  <h3 class="step-title">JavaScript DOM &amp; Modern ES6+</h3>
+                  <p class="step-desc">
+                    Built interactive applications using modern vanilla JavaScript. Implemented dynamic DOM manipulation, async operations with Promises, event architectures, form validation, and local storage state persistence.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="timeline-step-item">
+                <div class="step-marker">03</div>
+                <div class="step-card">
+                  <div class="step-meta">Component Architecture</div>
+                  <h3 class="step-title">Modern React &amp; TypeScript</h3>
+                  <p class="step-desc">
+                    Deepened component-driven frontend engineering using React and TypeScript. Built reusable component systems, leveraged React hooks for local state, and ensured compile-time type safety across data payloads.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="timeline-step-item active-step">
+                <div class="step-marker">04</div>
+                <div class="step-card">
+                  <div class="step-meta">Active Focus</div>
+                  <h3 class="step-title">Backend Architecture &amp; Node.js APIs</h3>
+                  <p class="step-desc">
+                    Currently expanding into backend development with Node.js. Designing RESTful API endpoints, server-side request routing, middleware handlers, and structuring JSON data flow between client and server.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Currently Building Section -->
+        <section class="section building-section">
+          <div class="container">
+            <div class="focus-banner">
+              <div class="focus-header">
+                <span class="focus-badge">
+                  <span class="pulse-dot"></span>
+                  <span>Active Development &amp; Research</span>
+                </span>
+                <h2 class="focus-title">Currently Building &amp; Exploring</h2>
+                <p class="focus-lead">
+                  Current focus areas as I transition toward full-stack engineering.
+                </p>
+              </div>
+
+              <div class="focus-cards-grid">
+                <div class="focus-card">
+                  <span class="focus-card-tag">Full-Stack Project</span>
+                  <h3>Resume Detector &amp; ATS Scanner</h3>
+                  <p>
+                    An end-to-end web application for parsing resume PDFs, analyzing skill matches, and generating ATS compatibility metrics via Node.js API endpoints.
+                  </p>
+                  <div class="focus-tags">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>Node.js</span>
+                    <span>REST APIs</span>
+                  </div>
+                </div>
+
+                <div class="focus-card">
+                  <span class="focus-card-tag">Systems &amp; Architecture</span>
+                  <h3>Backend Architecture</h3>
+                  <p>
+                    Strengthening Node.js fundamentals, RESTful API design patterns, request/response lifecycle, middleware implementation, and database integration.
+                  </p>
+                  <div class="focus-tags">
+                    <span>Node.js</span>
+                    <span>Express</span>
+                    <span>API Design</span>
+                    <span>Data Flow</span>
+                  </div>
+                </div>
+
+                <div class="focus-card">
+                  <span class="focus-card-tag">Engineering Discipline</span>
+                  <h3>Algorithmic Problem Solving</h3>
+                  <p>
+                    Continuously solving Data Structures and Algorithms problems across LeetCode, HackerRank, and GeeksforGeeks with 150+ problems solved.
+                  </p>
+                  <div class="focus-tags">
+                    <span>DSA</span>
+                    <span>Codolio</span>
+                    <span>Algorithms</span>
+                    <span>Optimization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+          <div class="container">
+            <div class="contact-box">
+              <div class="contact-header">
+                <span class="section-tag">[ 06 // INITIATE DIALOGUE ]</span>
+                <h2 class="contact-title">Let's build something extraordinary together.</h2>
+                <p class="contact-desc">
+                  I'm currently seeking frontend, backend, or full-stack opportunities where I can contribute to high-impact production codebases and continue advancing my engineering capabilities.
+                </p>
+              </div>
+
+              <div class="contact-actions-grid">
+                <!-- Direct Email Action -->
+                <div class="contact-action-card">
+                  <div class="action-card-header">
+                    <div class="action-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div>
+                      <span class="action-label">Direct Communication</span>
+                      <h3>Email Inbox</h3>
+                    </div>
+                  </div>
+                  <p class="action-value">suryanshhsingh986@gmail.com</p>
+                  <div class="action-btns">
+                    <a href="mailto:suryanshhsingh986@gmail.com" class="btn btn-primary btn-sm">
+                      <span>Send Email</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <button type="button" class="btn btn-secondary btn-sm copy-email-btn" data-email="suryanshhsingh986@gmail.com">
+                      <span>Copy Address</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Verified Social Channels -->
+                <div class="contact-action-card">
+                  <div class="profile-links-list">
+                    <a href="https://github.com/Suryanshsingh986" target="_blank" rel="noopener noreferrer" class="profile-link-row">
+                      <span class="p-channel">GitHub</span>
+                      <span class="p-handle">@Suryanshsingh986</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suryanshhsingh/" target="_blank" rel="noopener noreferrer" class="profile-link-row">
+                      <span class="p-channel">LinkedIn</span>
+                      <span class="p-handle">in/suryanshhsingh</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <a href="https://codolio.com/profile/Suryanshh_1" target="_blank" rel="noopener noreferrer" class="profile-link-row">
+                      <span class="p-channel">Codolio</span>
+                      <span class="p-handle">@Suryanshh_1</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Minimalist Studio Footer -->
+      <footer class="site-footer">
+        <div class="container footer-content">
+          <div class="footer-left">
+            <a href="#home" class="footer-brand">Suryansh Singh</a>
+            <p class="footer-tagline">Built with curiosity, code and precision.</p>
+          </div>
+
+          <div class="footer-nav" aria-label="Footer navigation">
+            <a href="#home">Home</a>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#journey">Journey</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <div class="footer-right">
+            <span class="footer-year">&copy; 2026 Suryansh Singh</span>
+            <a href="#home" class="back-to-top" aria-label="Back to top">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-category" id="modal-category">Category</span>
+            <h3 class="modal-title" id="modal-title">Project Name</h3>
+          </div>
+          <button class="modal-close-btn" id="modal-close" type="button" aria-label="Close project modal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-preview-stage" id="modal-preview-stage">
+            <div class="browser-bar" aria-hidden="true">
+              <div class="browser-dots"><span></span><span></span><span></span></div>
+              <span class="browser-address" id="modal-browser-address">https://...</span>
+              <span class="browser-badge" id="modal-browser-badge">● Live</span>
+            </div>
+            <div class="desktop-preview-container modal-iframe-container" id="modal-iframe-container"></div>
+          </div>
+
+          <div class="modal-details">
+            <div class="modal-section">
+              <h4 class="modal-section-title">Overview</h4>
+              <p class="modal-description" id="modal-description">Project overview details...</p>
+            </div>
+
+            <div class="modal-section">
+              <h4 class="modal-section-title">Technologies Used</h4>
+              <div class="modal-tech-tags" id="modal-tech-tags"></div>
+            </div>
+
+            <div class="modal-section" id="modal-highlights-container">
+              <h4 class="modal-section-title">Key Implementation Highlights</h4>
+              <ul class="modal-highlights-list" id="modal-highlights-list"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="modal-footer-actions">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modal-live-btn">
+              <span>Open Live Site</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="modal-github-btn" style="display: none;">
+              <span>View Source Code</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <span class="toast-icon">✓</span>
+      <span class="toast-message" id="toast-message">Email copied to clipboard</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/projects.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/interactions.js"></script>
+  </body>
+</html>

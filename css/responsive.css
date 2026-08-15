@@ -1,0 +1,250 @@
+/* ==========================================================================
+   SURYANSH SINGH — RESPONSIVE DESIGN SYSTEM
+   Pixel-Perfect Layouts Across Mobile (320px), Tablet, Laptop & Desktop
+   ========================================================================== */
+
+/* Large Tablets & Small Laptops (<= 1080px) */
+@media (max-width: 1080px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-visual {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skills-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .focus-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .split-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .section-meta-wrapper {
+    align-items: flex-start;
+  }
+}
+
+/* Medium Tablets & Mobile Landscape (<= 860px) */
+@media (max-width: 860px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 75px;
+    left: 1.25rem;
+    right: 1.25rem;
+    background: rgba(13, 16, 23, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px);
+    transition: all var(--transition-normal);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    z-index: 99;
+  }
+
+  .site-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .site-nav .nav-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .contact-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .duality-columns {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .duality-divider {
+    display: none;
+  }
+}
+
+/* Mobile Screens (<= 680px) */
+@media (max-width: 680px) {
+  .container {
+    width: calc(100% - 2rem);
+  }
+
+  .section {
+    padding: 4.5rem 0;
+  }
+
+  .hero-section {
+    padding: 2.5rem 0 4.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.35rem;
+  }
+
+  .hero-lead {
+    font-size: 0.98rem;
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  .hero-socials {
+    width: 100%;
+  }
+
+  .social-badge {
+    flex: 1 1 calc(50% - 0.4rem);
+    justify-content: center;
+  }
+
+  .focus-banner,
+  .contact-box {
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .profile-metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-line {
+    left: 21px;
+  }
+
+  .step-marker {
+    width: 44px;
+    height: 44px;
+    font-size: 0.8rem;
+  }
+
+  .timeline-step-item {
+    gap: 1.2rem;
+  }
+
+  .step-card {
+    padding: 1.25rem;
+  }
+
+  .modal-dialog {
+    max-height: 95vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .modal-header {
+    padding: 1.2rem 1.25rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .modal-preview-stage {
+    height: 240px;
+  }
+
+  .modal-footer {
+    padding: 1.2rem 1.25rem;
+  }
+
+  .modal-footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .modal-footer-actions .btn {
+    width: 100%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    justify-content: center;
+  }
+}
+
+/* Extra Small Screens (<= 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.95rem;
+  }
+
+  .social-badge {
+    flex: 1 1 100%;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+}
