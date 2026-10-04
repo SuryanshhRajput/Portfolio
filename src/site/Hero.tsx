@@ -1,10 +1,12 @@
 import { person } from '../content/site.js';
-import { Arrow } from './ui.js';
+import { cap, liveCount, word } from '../content/numbers.js';
+import { Arrow, Ext } from './ui.js';
+import { ISLAND_URL } from '../content/live.js';
 
 /** What the terminal in the hero types out. Every line is checked against the rest of the page. */
 const TERMINAL: { cmd: string; out: string }[] = [
   { cmd: 'whoami', out: 'Suryansh Singh, frontend developer moving to full-stack' },
-  { cmd: 'ls ~/shipped', out: 'glasseria/  vellora-escapes/  dogindeed/  +13 live builds' },
+  { cmd: 'ls ~/shipped', out: `glasseria/  vellora-escapes/  dogindeed/  +${liveCount} live builds` },
   { cmd: 'cat stack.txt', out: 'React · Next.js · TypeScript · Shopify Liquid · Tailwind · Redux Toolkit' },
   { cmd: 'tail offscreen.log', out: 'AltReality COO · Zenevia Hospitality Head · Innovate 2025 organiser' },
   { cmd: 'status --hiring', out: 'Open to frontend and full-stack roles' },
@@ -46,8 +48,11 @@ export function Hero() {
               Walk down the street <Arrow dir="down" />
             </a>
             <a className="btn btn--ghost" href="#live" data-magnetic="0.2">
-              13 live builds
+              {liveCount} live builds
             </a>
+            <Ext href={ISLAND_URL} className="btn btn--ghost">
+              Explore it as a 3D island <Arrow />
+            </Ext>
           </div>
         </div>
 
@@ -97,7 +102,7 @@ export function Manifesto() {
       <p className="manifesto__text" data-scrub-words="">
         I build storefronts for real businesses. A glassware brand, a travel company and a pet-supplies startup put
         their websites in my hands, and I shipped all three. On the side I build React apps to learn what a storefront doesn’t
-        teach: state, data and auth. <em>Three shops are open on the street below.</em> Thirteen more builds are live on
+        teach: state, data and auth. <em>Three shops are open on the street below.</em> {cap(word(liveCount))} more builds are live on
         the web.
       </p>
       <dl className="manifesto__facts">

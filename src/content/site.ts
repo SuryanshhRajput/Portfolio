@@ -40,7 +40,7 @@ export const profiles = {
 export const seo = {
   title: 'Suryansh Singh · Frontend Developer (React, Shopify)',
   description:
-    'Frontend developer moving to full-stack. Shopify storefronts for Glasseria and DogIndeed, the first Vellora Escapes website, thirteen live web builds and React apps on Redux Toolkit and TanStack Query. B.Tech CSE, Bennett University.',
+    'Frontend developer moving to full-stack. Shopify storefronts for Glasseria and DogIndeed, the first Vellora Escapes website, fourteen live web builds, including a 3D island version of this portfolio, and React apps on Redux Toolkit and TanStack Query. B.Tech CSE, Bennett University.',
   ogImage: 'og.png',
   themeColor: '#0E0E0D',
   keywords: [

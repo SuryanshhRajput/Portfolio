@@ -1,4 +1,5 @@
 import { liveProjects } from '../content/live.js';
+import { cap, word } from '../content/numbers.js';
 import { Arrow, Ext, Picture } from './ui.js';
 
 /**
@@ -13,7 +14,7 @@ export function Live() {
       <header className="live__head">
         <p className="label">04 · Open around the clock</p>
         <h2 className="live__title" id="live-title" data-split="">
-          Thirteen builds, live on the web right now.
+          {cap(word(liveProjects.length))} builds, live on the web right now.
         </h2>
         <p className="live__lede">
           {apps} working apps with real state behind them, and {liveProjects.length - apps} pages built to learn layout

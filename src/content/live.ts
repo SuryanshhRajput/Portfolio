@@ -10,7 +10,23 @@ import type { Img, LiveProject } from './types.js';
 const shot = (id: string, alt: string): Img => ({ base: `img/live/${id}`, widths: [1440, 760], w: 1440, h: 900, alt });
 const REPO = 'https://github.com/SuryanshhRajput/Task-Projects/tree/main';
 
+/** Where the island version of this portfolio is deployed. */
+export const ISLAND_URL = 'https://suryansh-island.vercel.app/';
+
 export const liveProjects: LiveProject[] = [
+  {
+    id: 'island',
+    name: 'Suryansh’s Island',
+    what: 'This portfolio, as a 3D world',
+    detail:
+      'A second take on this site: a hand-drawn island you can drag around and zoom into. Tap a building and the camera flies to it, the building opens up and its part of my work unrolls beside it. Every building is made in code, a custom shader draws the scene in ink and watercolour, and day and night follow the real sun over Greater Noida.',
+    making: 'An experiment in turning a portfolio into a place.',
+    stack: ['Three.js', 'GLSL shaders', 'GSAP', 'TypeScript', 'Web Audio'],
+    href: ISLAND_URL,
+    code: 'https://github.com/SuryanshhRajput/suryansh-island',
+    img: shot('island', 'A hand-drawn 3D island with labelled buildings: an observatory under a sun, a market street, an arcade, a library tower and a stage'),
+    app: true,
+  },
   {
     id: 'zoom',
     name: 'Zoom clone',
