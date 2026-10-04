@@ -23,7 +23,6 @@ export const liveProjects: LiveProject[] = [
     making: 'An experiment in turning a portfolio into a place.',
     stack: ['Three.js', 'GLSL shaders', 'GSAP', 'TypeScript', 'Web Audio'],
     href: ISLAND_URL,
-    code: 'https://github.com/SuryanshhRajput/suryansh-island',
     img: shot('island', 'A hand-drawn 3D island with labelled buildings: an observatory under a sun, a market street, an arcade, a library tower and a stage'),
     app: true,
   },
