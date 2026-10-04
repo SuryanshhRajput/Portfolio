@@ -4,7 +4,7 @@
 
 .street {
   position: relative;
-  background: #07080d;
+  background: var(--abyss);
   color: var(--on-night);
   color-scheme: dark;
   --line: var(--night-line);
@@ -120,7 +120,7 @@
   opacity: 1;
 }
 .street--3d:not(.is-ready) .street__pin {
-  background: radial-gradient(60% 50% at 60% 55%, #1b1610 0%, #07080d 70%);
+  background: radial-gradient(60% 50% at 60% 55%, #1b1610 0%, var(--abyss) 70%);
 }
 .street--3d .street__head {
   position: absolute;

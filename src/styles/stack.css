@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------ */
 
 .stack {
-  --stack-bg: #0b0c12;
+  --stack-bg: var(--abyss);
   --ink: var(--on-night);
   --line: var(--night-line);
   --mute: var(--on-night-mute);

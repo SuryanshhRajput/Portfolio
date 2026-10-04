@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------ */
 
 .hero {
-  --hero-bg: #06070b;
+  --hero-bg: var(--abyss);
   --hero-ink: #efebe2;
   --hero-mute: #8f8c84;
   position: relative;
@@ -18,21 +18,36 @@
   isolation: isolate;
 }
 
+.opening {
+  position: relative;
+  background: var(--abyss);
+  isolation: isolate;
+}
+/* One particle canvas behind the hero and the introduction (pinned in script). */
 .hero__gl {
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  left: 0;
+  top: 0;
+  z-index: 0;
   display: none;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100svh;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 1.4s ease;
 }
-.hero--3d .hero__gl {
+.opening.is-3d .hero__gl {
   display: block;
 }
-.hero--3d.is-ready .hero__gl {
+.opening.is-ready .hero__gl {
   opacity: 1;
+}
+.opening .hero,
+.opening .manifesto {
+  position: relative;
+  z-index: 1;
+  background: transparent;
 }
 
 /* A warm glow where the sun sits, plus a faint scanline texture. */
@@ -41,9 +56,7 @@
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(40% 36% at 50% 40%, rgba(255, 90, 31, 0.22), transparent 70%),
-    radial-gradient(90% 60% at 50% 110%, rgba(255, 90, 31, 0.08), transparent 70%),
-    var(--hero-bg);
+    radial-gradient(40% 36% at 50% 40%, rgba(255, 90, 31, 0.22), transparent 70%);
   pointer-events: none;
 }
 .hero__glow::after {
@@ -274,11 +287,6 @@
 @media (max-width: 959px), (max-aspect-ratio: 19/20) {
   .hero {
     grid-template-rows: 46svh auto;
-  }
-  .hero__gl {
-    position: absolute;
-    height: 100svh;
-    bottom: auto;
   }
   .hero__title {
     top: 30svh;

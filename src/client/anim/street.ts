@@ -107,23 +107,28 @@ export function initStreet(opts: { webgl: boolean; reduced: boolean }): void {
   );
   window.addEventListener('resize', () => scene?.resize());
 
-  // Build the 3D street a little before it scrolls into view.
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top 300%',
-    once: true,
-    onEnter: () => {
-      import('../three/street3d.js')
-        .then(({ createStreet }) => createStreet(canvas, data))
-        .then((s) => {
-          scene = s;
-          scene.setProgress(progress);
-          section.classList.add('is-ready');
-        })
-        .catch((err) => {
-          console.warn('[street] 3D unavailable', err);
-          section.classList.add('is-failed');
-        });
-    },
-  });
+  // Build the 3D street early (once the page has settled) so it is already lit by
+  // the time anyone scrolls to it, instead of showing an empty dark stage.
+  let started = false;
+  const build = () => {
+    if (started) return;
+    started = true;
+    import('../three/street3d.js')
+      .then(({ createStreet }) => createStreet(canvas, data))
+      .then((s) => {
+        scene = s;
+        scene.setProgress(progress);
+        section.classList.add('is-ready');
+      })
+      .catch((err) => {
+        console.warn('[street] 3D unavailable', err);
+        section.classList.add('is-failed');
+      });
+  };
+  const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void }).requestIdleCallback;
+  const soon = () => (idle ? idle(build, { timeout: 2500 }) : setTimeout(build, 1200));
+  if (document.readyState === 'complete') setTimeout(soon, 2500);
+  else window.addEventListener('load', () => setTimeout(soon, 2500), { once: true });
+  // And in any case as soon as it is within a few screens.
+  ScrollTrigger.create({ trigger: section, start: 'top 400%', once: true, onEnter: build });
 }

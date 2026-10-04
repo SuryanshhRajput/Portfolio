@@ -3,7 +3,7 @@
  * it isn't on the page. Pinned scenes are set up first, in page order, so the
  * scroll positions of everything after them are measured correctly.
  */
-import { gsap, ScrollSmoother, ScrollTrigger, WIDE } from './anim/gsap.js';
+import { gsap, ScrollSmoother, ScrollTrigger } from './anim/gsap.js';
 import { runLoader } from './anim/loader.js';
 import { initCursor } from './anim/cursor.js';
 import { initKineticTitles, initManifesto, initMarquee, initReveals, initSplitHeadings } from './anim/reveals.js';
@@ -49,7 +49,7 @@ document.documentElement.classList.toggle('webgl', webgl);
 const smoother =
   !reduced && hasFinePointer() && !location.search.includes('nosmooth')
     ? safely('smoother', () =>
-        ScrollSmoother.create({ wrapper: '#smooth-wrapper', content: '#smooth-content', smooth: 1.1, effects: true, smoothTouch: false }),
+        ScrollSmoother.create({ wrapper: '#smooth-wrapper', content: '#smooth-content', smooth: 0.8, effects: true, smoothTouch: false }),
       )
     : undefined;
 
@@ -93,27 +93,33 @@ let particlesReady: Promise<ParticleHero | null> = Promise.resolve(null);
 let particles: ParticleHero | null = null;
 if (heroEl && webgl) {
   heroEl.classList.add('hero--3d');
-  // Created now, in page order, so later pins measure the right positions.
-  const pinIt = !reduced && window.matchMedia(WIDE).matches;
-  const heroTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: heroEl,
-      start: 'top top',
-      end: pinIt ? '+=90%' : 'bottom top',
-      pin: pinIt,
-      scrub: pinIt ? true : false,
-      onUpdate: (self) => particles?.setScroll(self.progress),
-      onToggle: (self) => particles?.setVisible(self.isActive || self.progress < 1),
+  const opening = heroEl.closest<HTMLElement>('.opening') ?? heroEl;
+  const canvas = opening.querySelector<HTMLCanvasElement>('.hero__gl')!;
+  opening.classList.add('is-3d');
+  // One particle field runs behind the hero and the introduction: it holds still
+  // while both scroll over it, the camera dives as you read, and it thins out
+  // just as the street arrives. No pinned pause, no empty screen in between.
+  ScrollTrigger.create({
+    trigger: opening,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: canvas,
+    pinSpacing: false,
+    onUpdate: (self) => {
+      particles?.setScroll(Math.min(1, self.progress * 1.15));
+      if (particles) canvas.style.opacity = String(1 - Math.min(1, Math.max(0, (self.progress - 0.72) / 0.28)));
     },
+    onToggle: (self) => particles?.setVisible(self.isActive || self.progress < 1),
   });
-  // The copy steps aside for the first half of the dive.
-  if (pinIt) heroTl.to('.hero__bottom, .hero__hud, .hero__cue', { opacity: 0, y: -40, ease: 'none', duration: 0.5 }).to({}, { duration: 0.5 });
-  const canvas = heroEl.querySelector<HTMLCanvasElement>('.hero__gl')!;
+
   particlesReady = import('./three/particles.js')
     .then(({ createParticles }) => createParticles(canvas, { reduced }))
     .then((p) => {
       particles = p;
       heroEl.classList.add('is-ready');
+      opening.classList.add('is-ready');
+      // After the fade-in, the scroll timeline owns the canvas opacity.
+      setTimeout(() => (canvas.style.transition = 'none'), 1500);
       const count = heroEl.querySelector('[data-particle-count]');
       if (count) count.textContent = `${p.count.toLocaleString('en-IN')} particles`;
       if (!reduced) {
@@ -128,6 +134,7 @@ if (heroEl && webgl) {
     .catch((err) => {
       console.warn('[hero] 3D unavailable, using type', err);
       heroEl.classList.remove('hero--3d');
+      opening.classList.remove('is-3d');
       return null;
     });
 }
@@ -156,17 +163,20 @@ window.addEventListener('load', () => ScrollTrigger.refresh());
 
 /* ------------------------------ opening sequence ------------------------- */
 
-runLoader(reduced).then(async () => {
+// The hero copy waits, hidden, until the loader has dissolved into the hero.
+if (!reduced) gsap.set('.hero__eyebrow, .hero__lede, .hero__ctas, .term', { opacity: 0, y: 36 });
+
+runLoader(reduced, particlesReady).then(async () => {
   if (reduced) return;
-  const p = await Promise.race([particlesReady, new Promise<null>((r) => setTimeout(() => r(null), 2000))]);
+  const p = await Promise.race([particlesReady, new Promise<null>((r) => setTimeout(() => r(null), 300))]);
   if (p) void p.intro();
-  gsap.from('.hero__eyebrow, .hero__lede, .hero__ctas, .term', {
-    y: 36,
-    opacity: 0,
+  gsap.to('.hero__eyebrow, .hero__lede, .hero__ctas, .term', {
+    y: 0,
+    opacity: 1,
     stagger: 0.09,
     duration: 1.2,
     ease: 'expo.out',
-    delay: p ? 1.6 : 0.2,
+    delay: p ? 1.3 : 0.2,
     onComplete: () => void terminal?.play(),
   });
   if (!p) gsap.from('.hero__title > span', { yPercent: 40, opacity: 0, stagger: 0.12, duration: 1.4, ease: 'expo.out' });

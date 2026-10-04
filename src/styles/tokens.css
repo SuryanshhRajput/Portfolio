@@ -18,7 +18,8 @@
   --sun: #ff5a1f;
   --sun-deep: #b8390b;
   --night: #121211;
-  --abyss: #0b0b0c;
+  /* Every dark chapter sits on this one colour, so they run into each other without seams. */
+  --abyss: #07080c;
   --night-2: #1c1c1a;
   --on-night: #e7e6e0;
   --on-night-mute: #9c9b93;

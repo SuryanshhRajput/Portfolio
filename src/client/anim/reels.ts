@@ -30,7 +30,7 @@ function pinnedRow(
     scrollTrigger: {
       trigger: section,
       start: 'top top',
-      end: () => '+=' + Math.max(window.innerHeight * 0.6, distance() * 0.8),
+      end: () => '+=' + Math.max(window.innerHeight * 0.6, distance() * 0.6),
       pin: true,
       scrub: 0.8,
       invalidateOnRefresh: true,

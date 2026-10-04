@@ -504,7 +504,7 @@ export async function createStreet(canvasEl: HTMLCanvasElement, shops: ShopData[
 
   /* Camera path: approach, stop in front of each shop, then drift past the last. */
   const xs = shops.map((_, i) => i * STEP);
-  const keys: [number, number][] = [[0, -STEP * 0.9], ...SHOP_STOPS.slice(0, shops.length).map((p, i) => [p, xs[i]!] as [number, number]), [1, xs[xs.length - 1]! + 1.5]];
+  const keys: [number, number][] = [[0, -STEP * 0.4], ...SHOP_STOPS.slice(0, shops.length).map((p, i) => [p, xs[i]!] as [number, number]), [1, xs[xs.length - 1]! + 1.5]];
   const camX = (p: number) => {
     for (let i = 0; i < keys.length - 1; i++) {
       const [p0, x0] = keys[i]!;

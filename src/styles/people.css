@@ -3,7 +3,7 @@
 /* ------------------------------------------------------------------ */
 
 .rooms {
-  background: #08090d;
+  background: var(--abyss);
   color: var(--on-night);
   color-scheme: dark;
   --line: var(--night-line);
@@ -184,7 +184,7 @@
   height: 8px;
   transform: translateX(-50%);
   border-radius: 99px;
-  background: #08090d;
+  background: var(--abyss);
   z-index: 2;
 }
 .pass__top {
@@ -478,7 +478,7 @@
   gap: clamp(20px, 3vh, 32px);
   overflow: hidden;
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
-  background: var(--night);
+  background: var(--abyss);
   color: var(--on-night);
   color-scheme: dark;
   --line: var(--night-line);

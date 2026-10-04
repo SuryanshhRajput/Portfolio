@@ -77,8 +77,11 @@ function Body({ assets }: { assets: Assets }) {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main id="main">
-            <Hero />
-            <Manifesto />
+            <div className="opening">
+              <canvas className="hero__gl" aria-hidden="true" />
+              <Hero />
+              <Manifesto />
+            </div>
             <Marquee />
             <Street />
             <CaseStudies />

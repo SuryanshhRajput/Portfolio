@@ -19,7 +19,6 @@ const TERMINAL: { cmd: string; out: string }[] = [
 export function Hero() {
   return (
     <section className="hero" id="top" data-tone="dark" aria-labelledby="hero-name">
-      <canvas className="hero__gl" aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="hero__hud" aria-hidden="true">

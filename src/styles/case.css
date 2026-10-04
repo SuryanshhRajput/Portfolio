@@ -700,3 +700,35 @@
   transform: scaleX(0);
   transform-origin: left;
 }
+
+/* Seams: each chapter fades in from the colour of the one above it, so the page
+   reads as one continuous strip instead of separate screens. The fade lives in
+   the top padding, so it never sits under text. */
+.case {
+  --seam: var(--abyss);
+}
+.case--vellora {
+  --seam: #f2eee8;
+}
+.case--dogindeed {
+  --seam: #0c1626;
+}
+.case::before,
+.live::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--section-pad);
+  background: linear-gradient(
+    to bottom,
+    var(--seam),
+    color-mix(in srgb, var(--seam) 35%, var(--c-bg, var(--abyss))) 55%,
+    var(--c-bg, var(--abyss))
+  );
+  pointer-events: none;
+}
+.live {
+  --seam: #f4e5d1;
+}
