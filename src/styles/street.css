@@ -1,0 +1,318 @@
+/* ------------------------------------------------------------------ */
+/* Freelance Street                                                    */
+/* ------------------------------------------------------------------ */
+
+.street {
+  position: relative;
+  background: #07080d;
+  color: var(--on-night);
+  color-scheme: dark;
+  --line: var(--night-line);
+  --mute: var(--on-night-mute);
+}
+.street__pin {
+  position: relative;
+}
+.street__gl {
+  display: none;
+}
+.street__title {
+  font-family: var(--f-display);
+  font-weight: 760;
+  font-stretch: 90%;
+  font-size: clamp(1.9rem, 1rem + 2.8vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+.street__title em {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--sun);
+}
+.street .label {
+  color: var(--on-night-mute);
+  margin-bottom: 14px;
+}
+
+/* Shop text */
+.shop__n {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--shop-accent, var(--sun));
+}
+.shop--vacant {
+  --shop-accent: #c9c4b8;
+}
+.shop__name {
+  margin-top: 8px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 105%;
+  font-size: clamp(2.2rem, 1.4rem + 2.6vw, 4.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+.shop__pitch {
+  margin-top: 14px;
+  max-width: 34ch;
+  font-size: var(--fs-l);
+  line-height: 1.38;
+  color: color-mix(in srgb, var(--on-night) 86%, transparent);
+  text-wrap: pretty;
+}
+.shop__meta {
+  margin-top: 10px;
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-night-mute);
+}
+.shop__enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 0.85em 1.3em;
+  border-radius: 999px;
+  background: var(--shop-accent, var(--sun));
+  color: #0b0b0c;
+  font-family: var(--f-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.4s var(--ease-out);
+}
+.shop__enter:hover {
+  transform: translateX(4px);
+}
+.shop--vellora .shop__enter,
+.shop--vacant .shop__enter {
+  color: #0b0b0c;
+}
+
+/* ---- 3D mode: a pinned, full-screen street with the shop's card over it ---- */
+
+.street--3d .street__pin {
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+.street--3d .street__gl {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.street--3d.is-ready .street__gl {
+  opacity: 1;
+}
+.street--3d:not(.is-ready) .street__pin {
+  background: radial-gradient(60% 50% at 60% 55%, #1b1610 0%, #07080d 70%);
+}
+.street--3d .street__head {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 84px);
+  left: var(--pad-l);
+  right: var(--gutter);
+  z-index: 2;
+  pointer-events: none;
+}
+.street--3d .street__shops {
+  position: absolute;
+  left: var(--pad-l);
+  bottom: clamp(96px, 14vh, 150px);
+  z-index: 2;
+  width: min(30rem, 40vw);
+  padding: 0;
+  list-style: none;
+}
+.street--3d .shop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.street--3d .shop.is-active {
+  visibility: visible;
+  pointer-events: auto;
+}
+.street--3d .shop__front {
+  display: none;
+}
+.street--3d .shop__info {
+  padding: 22px 24px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  background: rgba(10, 11, 16, 0.62);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.street__hud {
+  display: none;
+}
+.street--3d .street__hud {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(96px, 14vh, 150px);
+  z-index: 2;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-night-mute);
+}
+.street__count {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 110%;
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+  color: var(--on-night);
+}
+.street__bar {
+  display: block;
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.street__bar span {
+  display: block;
+  height: 100%;
+  background: var(--sun);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@media (max-width: 899px) {
+  .street--3d .street__shops {
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
+    width: auto;
+  }
+  .street--3d .shop__info {
+    padding: 16px 18px 18px;
+  }
+  .street--3d .shop__pitch {
+    font-size: var(--fs-body);
+  }
+  .street--3d .street__hud {
+    top: calc(env(safe-area-inset-top, 0px) + 84px);
+    bottom: auto;
+  }
+  .street--3d .street__head {
+    right: 30%;
+  }
+}
+
+/* ---- Flat mode (no WebGL, reduced motion, or no script): CSS shopfronts ---- */
+
+.street:not(.street--3d) .street__pin {
+  padding: var(--section-pad) var(--gutter) var(--section-pad) var(--pad-l);
+}
+.street:not(.street--3d) .street__head {
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+.street:not(.street--3d) .street__shops {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(40px, 5vw, 72px) clamp(24px, 3vw, 48px);
+  padding: 0;
+  list-style: none;
+}
+.street:not(.street--3d) .shop {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+.shop__front {
+  padding: 16px 16px 0;
+  border-radius: 10px 10px 0 0;
+  background: var(--shop-bg, #2a2a2c);
+  box-shadow: inset 0 -10px 0 rgba(0, 0, 0, 0.25);
+}
+.shop--vacant .shop__front {
+  background: #2a2a2c;
+}
+.shop__sign {
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  border: 2px solid var(--shop-accent, #666);
+  font-family: var(--f-serif);
+  font-size: clamp(1.4rem, 1rem + 1.2vw, 2.1rem);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--shop-accent, #ddd);
+}
+.shop--dogindeed .shop__sign {
+  font-family: var(--f-display);
+  font-weight: 800;
+}
+.shop__window {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+.shop__window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.shop__shutter {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(30, 20, 10, 0.4)),
+    repeating-linear-gradient(to bottom, #9a9a96 0, #cfcfca 7px, #7d7d79 9px, #5d5d5a 16px);
+  box-shadow: inset 0 6px 0 #2b2b2e;
+}
+html:not(.js) .shop:not(.shop--vacant) .shop__shutter {
+  display: none;
+}
+@media (max-width: 759px) {
+  .street:not(.street--3d) .street__shops {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Phones: a compact counter tucked under the top bar, clear of the shop sign. */
+@media (max-width: 899px) {
+  .street--3d .street__hud {
+    top: calc(env(safe-area-inset-top, 0px) + 72px);
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .street--3d .street__count {
+    font-size: 1.1rem;
+  }
+  .street--3d .street__hint {
+    display: none;
+  }
+  .street--3d .street__bar {
+    width: 64px;
+  }
+}

@@ -1,0 +1,124 @@
+/* ------------------------------------------------------------------ */
+/* Shared chapter padding                                              */
+/* ------------------------------------------------------------------ */
+
+.manifesto,
+.case,
+.live,
+.bench,
+.stack,
+.rooms,
+.contact {
+  position: relative;
+  padding: var(--section-pad) var(--gutter) var(--section-pad) var(--pad-l);
+}
+
+/* ------------------------------------------------------------------ */
+/* Manifesto: a paragraph that lights up as you read                   */
+/* ------------------------------------------------------------------ */
+
+.manifesto {
+  background: var(--abyss);
+  color: var(--on-night);
+  color-scheme: dark;
+  --line: var(--night-line);
+  --mute: var(--on-night-mute);
+}
+.manifesto .label {
+  color: var(--sun);
+}
+.manifesto__label {
+  margin-bottom: 28px;
+}
+.manifesto__text {
+  max-width: 24ch;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-stretch: 92%;
+  font-size: clamp(2rem, 1rem + 4.2vw, 5.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-wrap: pretty;
+}
+.manifesto__text em {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--sun);
+}
+.mword {
+  will-change: opacity;
+}
+.manifesto__facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 clamp(16px, 2.5vw, 40px);
+  max-width: 82rem;
+  margin-top: clamp(56px, 10vh, 120px);
+}
+.manifesto__facts div {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--night-line);
+}
+.manifesto__facts dt {
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--on-night-mute);
+}
+.manifesto__facts dd {
+  font-size: var(--fs-s);
+  line-height: 1.45;
+}
+@media (max-width: 959px) {
+  .manifesto__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 22px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Marquee band                                                        */
+/* ------------------------------------------------------------------ */
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(14px, 2.2vw, 26px) 0;
+  background: var(--sun);
+  color: var(--ink);
+  border-block: 1px solid rgba(0, 0, 0, 0.2);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee__row {
+  display: flex;
+  flex: none;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 40px);
+  padding-right: clamp(18px, 2.4vw, 40px);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 112%;
+  font-size: clamp(1.8rem, 1rem + 3.4vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee__star {
+  width: 0.55em;
+  height: 0.55em;
+  fill: currentColor;
+}

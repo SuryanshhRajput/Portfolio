@@ -1,0 +1,404 @@
+/* ------------------------------------------------------------------ */
+/* Fixed frame. Colours follow the tone of whatever is behind them.    */
+/* ------------------------------------------------------------------ */
+
+.topbar,
+.dock,
+.rail {
+  --c-fg: var(--ink);
+  --c-bg: var(--paper);
+  --c-line: var(--line);
+}
+html[data-tone-top='dark'] .topbar,
+html[data-tone-mid='dark'] .rail,
+html[data-tone-bottom='dark'] .dock {
+  --c-fg: var(--on-night);
+  --c-bg: var(--night);
+  --c-line: var(--night-line);
+}
+
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: calc(env(safe-area-inset-top, 0px) + 16px) var(--gutter) 0;
+  color: var(--c-fg);
+  pointer-events: none;
+  transition: color 0.3s;
+}
+.topbar > * {
+  pointer-events: auto;
+}
+
+/* Over the page, the wordmark and clock sit on small frosted pills so text never runs through them. */
+.wordmark,
+.topbar__clock {
+  padding: 0.6em 1em;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-bg) 84%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+/* In the hero they stand straight on the sky. */
+html.at-hero .wordmark,
+html.at-hero .topbar__clock {
+  border-color: transparent;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-stretch: 100%;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.wordmark__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sun) 25%, transparent);
+}
+
+.topbar__clock {
+  margin: 0;
+  font-size: 0.7rem;
+}
+.readout__k {
+  opacity: 0.6;
+}
+
+/* Chapter rail */
+.rail {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .rail {
+    display: block;
+    position: fixed;
+    left: calc(var(--gutter) - 6px);
+    top: 50%;
+    z-index: 40;
+    transform: translateY(-50%);
+    color: var(--c-fg);
+    transition: color 0.3s;
+  }
+  .rail ol {
+    display: grid;
+    gap: 2px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+  .rail ol::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: var(--c-line);
+  }
+  .rail a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 22px;
+    padding-left: 0;
+    text-decoration: none;
+  }
+  .rail__tick {
+    width: 13px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+    transition:
+      width 0.3s var(--ease-out),
+      opacity 0.3s;
+  }
+  .rail__label {
+    font-family: var(--f-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+      opacity 0.25s,
+      transform 0.35s var(--ease-out);
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--c-bg);
+  }
+  /* Labels stay hidden until the rail is pointed at, so they never sit over the text. */
+  .rail a:hover .rail__label,
+  .rail a:focus-visible .rail__label,
+  .rail:hover a.is-active .rail__label {
+    opacity: 1;
+    transform: none;
+  }
+  .rail a.is-active .rail__tick {
+    width: 22px;
+    opacity: 1;
+  }
+  .rail__sun {
+    position: absolute;
+    left: 2px;
+    top: 0;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 50%;
+    background: var(--sun);
+    box-shadow: 0 0 12px 2px color-mix(in srgb, var(--sun) 55%, transparent);
+    transition: transform 0.6s var(--ease-out);
+    z-index: 1;
+  }
+}
+
+/* Dock: index on the left, contact on the right */
+.dock {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 16px);
+  pointer-events: none;
+}
+.dock__btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.75em 1.1em;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c-bg) 86%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--c-fg);
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.4s var(--ease-out),
+    background-color 0.25s,
+    color 0.25s,
+    opacity 0.3s;
+}
+html .dock__btn:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+.dock__btn kbd {
+  border-color: currentColor;
+  font-size: 0.66rem;
+}
+.dock__btn--sun {
+  margin-left: auto;
+  background: var(--sun);
+  color: var(--ink);
+  border-color: var(--sun);
+}
+html.at-contact .dock__btn--sun,
+html.at-hero .dock__btn,
+html.scroll-down .dock__btn {
+  opacity: 0;
+  pointer-events: none;
+}
+/* The dock steps aside while reading downwards and comes back on the way up. */
+html.at-hero .dock__btn,
+html.scroll-down .dock__btn {
+  transform: translateY(14px);
+}
+@media (max-width: 639px) {
+  .dock__btn kbd,
+  .topbar__clock .readout__k:first-child {
+    display: none;
+  }
+}
+
+/* Index dialog */
+.index {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--night);
+  color: var(--on-night);
+  overflow-y: auto;
+}
+.index::backdrop {
+  background: rgba(10, 10, 9, 0.6);
+}
+.index[open] {
+  animation: index-in 0.45s var(--ease-out);
+}
+@keyframes index-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.index__inner {
+  min-height: 100%;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) var(--gutter) calc(env(safe-area-inset-bottom, 0px) + 40px);
+}
+.index .label {
+  color: var(--on-night-mute);
+}
+.index__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(32px, 7vh, 80px);
+}
+.index__close {
+  display: inline-flex;
+  gap: 0.6em;
+  align-items: center;
+  padding: 0.6em 1em;
+  border: 1px solid var(--night-line);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.index__close:hover {
+  background: var(--on-night);
+  color: var(--night);
+}
+.index__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+}
+.index__cols h3 {
+  margin: 0 0 14px;
+}
+.index__cols h3:not(:first-child) {
+  margin-top: 36px;
+}
+.index__chapters {
+  padding: 0;
+  list-style: none;
+}
+.index__chapters a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 6px 0;
+  font-family: var(--f-display);
+  font-weight: 750;
+  font-stretch: 80%;
+  font-size: clamp(1.9rem, 1rem + 2.6vw, 3.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    font-stretch 0.4s var(--ease-out),
+    color 0.2s;
+}
+.index__chapters a:hover,
+.index__chapters a:focus-visible {
+  color: var(--sun);
+  font-stretch: 110%;
+}
+.index__n {
+  font-family: var(--f-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--on-night-mute);
+  letter-spacing: 0.06em;
+  min-width: 2.2em;
+}
+.index__list {
+  display: grid;
+  gap: 2px;
+  padding: 0;
+  list-style: none;
+}
+.index__list li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--night-line);
+}
+.index__list a {
+  font-family: var(--f-display);
+  font-weight: 650;
+  font-size: var(--fs-l);
+  text-decoration: none;
+}
+.index__list a:hover {
+  color: var(--sun);
+}
+.index__list span {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  color: var(--on-night-mute);
+}
+.index__tip {
+  margin-top: 36px;
+  font-size: var(--fs-s);
+  color: var(--on-night-mute);
+}
+@media (max-width: 959px) {
+  .index__cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cursor-following preview image */
+.peek {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 45;
+  width: clamp(220px, 22vw, 340px);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.peek img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow:
+    0 24px 48px -20px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}

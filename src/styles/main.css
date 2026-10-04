@@ -1,0 +1,47 @@
+@import './tokens.css';
+@import './base.css';
+@import './motion.css';
+@import './chrome.css';
+@import './hero.css';
+@import './intro.css';
+@import './street.css';
+@import './case.css';
+@import './live.css';
+@import './bench.css';
+@import './stack.css';
+@import './people.css';
+
+[hidden] {
+  display: none !important;
+}
+
+/* Without JavaScript there is no live clock, no live sun and no index dialog, so they don't pretend to be there. */
+html:not(.js) .topbar__clock,
+html:not(.js) .contact__time,
+html:not(.js) .instrument__live,
+html:not(.js) [data-open-index] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .topbar,
+  .rail,
+  .dock,
+  .hero__gl,
+  .hero__cue {
+    display: none !important;
+  }
+  .stage.is-scrub {
+    height: auto;
+  }
+}

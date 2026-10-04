@@ -1,0 +1,261 @@
+/* ------------------------------------------------------------------ */
+/* The bench: React apps built to learn, each honest about its state.  */
+/* ------------------------------------------------------------------ */
+
+.bench {
+  --paper: #0d0e14;
+  --paper-lo: #161720;
+  --ink: #ece8df;
+  --ink-2: #c9c4b9;
+  --mute: #9c9b93;
+  --line: rgba(236, 232, 223, 0.13);
+  --sun-deep: #ff7a45;
+  background:
+    radial-gradient(60% 40% at 80% 10%, rgba(123, 92, 255, 0.12), transparent 70%),
+    radial-gradient(50% 40% at 10% 60%, rgba(255, 90, 31, 0.08), transparent 70%),
+    var(--paper);
+  color: var(--ink);
+  color-scheme: dark;
+}
+
+.bench__features {
+  display: grid;
+  gap: clamp(72px, 12vh, 152px);
+}
+
+.specimen {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 4.5vw, 80px);
+  align-items: start;
+}
+.specimen--flip .specimen__shots {
+  perspective: 1400px;
+  order: 2;
+}
+
+.specimen__shots {
+  perspective: 1400px;
+  display: grid;
+  gap: 12px;
+}
+.shots__frame {
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--paper-lo);
+  box-shadow:
+    0 30px 60px -36px rgba(22, 22, 20, 0.5),
+    0 0 0 1px var(--line);
+}
+.shots__img img {
+  width: 100%;
+  aspect-ratio: 1440 / 900;
+  object-fit: cover;
+}
+.shots__tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-self: start;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.shots__tabs button {
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.shots__tabs button:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.shots__tabs button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.shots__note {
+  font-size: var(--fs-s);
+  color: var(--mute);
+}
+
+.specimen__text {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+.specimen__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+/* Not deployed: an open ring in the sun's colour. */
+.specimen__status .status__dot {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--sun-deep);
+}
+.specimen__name {
+  font-family: var(--f-display);
+  font-weight: 780;
+  font-stretch: 92%;
+  font-size: var(--fs-2xl);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+.specimen__alias {
+  font-weight: 400;
+  font-stretch: 80%;
+  font-size: 0.42em;
+  letter-spacing: 0;
+  color: var(--mute);
+  vertical-align: 0.5em;
+}
+.specimen__summary {
+  font-size: var(--fs-l);
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+.specimen__lists {
+  display: grid;
+  gap: 22px;
+}
+.specimen__lists .built {
+  margin-top: 8px;
+}
+
+/* Also on the bench: a ledger of smaller builds */
+.more {
+  margin-top: clamp(88px, 14vh, 176px);
+}
+.more__list {
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+.more__row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 15rem) auto;
+  gap: 8px clamp(16px, 2.4vw, 40px);
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 80px;
+  transition: background-color 0.25s;
+}
+.more__row:hover {
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--sun) 7%, transparent) 30%, transparent);
+}
+.more__year {
+  font-family: var(--f-mono);
+  font-size: var(--fs-xs);
+  color: var(--mute);
+}
+.more__main {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.more__name {
+  font-family: var(--f-display);
+  font-weight: 720;
+  font-stretch: 92%;
+  font-size: var(--fs-l);
+  line-height: 1.1;
+}
+.more__text {
+  max-width: 64ch;
+  font-size: var(--fs-s);
+  line-height: 1.5;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.more__stack {
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--mute);
+}
+.more__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.more__nolink {
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mute);
+  white-space: nowrap;
+}
+
+@media (max-width: 1099px) {
+  .more__row {
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  }
+  .more__stack {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .more__links {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+}
+@media (max-width: 959px) {
+  .specimen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .specimen--flip .specimen__shots {
+  perspective: 1400px;
+    order: 0;
+  }
+}
+@media (max-width: 639px) {
+  .more__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .more__stack,
+  .more__links {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .more__links {
+    justify-content: flex-start;
+  }
+}
+
+/* Dark bench: screens glow a little and lean toward the pointer. */
+.bench .label {
+  color: var(--sun);
+}
+.bench .shots__frame {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 40px 90px -40px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 30px 120px -60px rgba(123, 92, 255, 0.5);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.bench .more__row {
+  border-radius: 8px;
+}

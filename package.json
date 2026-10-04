@@ -1,0 +1,30 @@
+{
+  "name": "suryansh-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio of Suryansh Singh. React rendered to static HTML at build time; GSAP and Three.js bring it to life in the browser.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "preview": "node scripts/dev.mjs --no-watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "three": ">=0.180.0 <0.200.0"
+  },
+  "devDependencies": {
+    "@types/three": ">=0.180.0 <0.200.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "esbuild": "^0.28.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^6.0.3"
+  }
+}

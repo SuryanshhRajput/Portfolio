@@ -1,0 +1,167 @@
+/* ------------------------------------------------------------------ */
+/* Preloader                                                           */
+/* ------------------------------------------------------------------ */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  background: var(--abyss);
+  color: var(--on-night);
+  clip-path: inset(0 0 0 0);
+  /* If the script never runs, the curtain lifts by itself. */
+  animation: loader-out 0.6s 4s forwards;
+}
+html:not(.js) .loader {
+  display: none;
+}
+@keyframes loader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.loader__sky {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.loader__sun {
+  position: absolute;
+  left: 50%;
+  bottom: -12vmin;
+  width: 34vmin;
+  aspect-ratio: 1;
+  margin-left: -17vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe2b4 0%, #ff8a3d 50%, #ff5a1f 68%, rgba(255, 90, 31, 0) 72%);
+  box-shadow: 0 0 120px 40px rgba(255, 90, 31, 0.35);
+}
+.loader__word {
+  position: relative;
+  font-family: 'Noto Sans Devanagari', 'Kohinoor Devanagari', 'Devanagari Sangam MN', var(--f-text);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+.loader__meaning {
+  position: relative;
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  color: var(--on-night-mute);
+}
+.loader__count {
+  position: absolute;
+  right: var(--gutter);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 110%;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.8;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cursor                                                              */
+/* ------------------------------------------------------------------ */
+
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cursor.is-on {
+  opacity: 1;
+}
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button,
+html.has-cursor label,
+html.has-cursor summary {
+  cursor: none;
+}
+html.has-cursor input[type='range'] {
+  cursor: grab;
+}
+.cursor__dot,
+.cursor__ring,
+.cursor__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--sun);
+}
+.cursor__ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transition:
+    width 0.35s var(--ease-out),
+    height 0.35s var(--ease-out),
+    margin 0.35s var(--ease-out),
+    background-color 0.3s,
+    border-color 0.3s;
+}
+.cursor.is-link .cursor__ring {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  background: rgba(255, 255, 255, 0.92);
+}
+.cursor.is-label .cursor__ring {
+  width: 92px;
+  height: 92px;
+  margin: -46px 0 0 -46px;
+  border-color: var(--sun);
+  background: var(--sun);
+  mix-blend-mode: normal;
+}
+.cursor.is-down .cursor__ring {
+  transform: scale(0.85);
+}
+.cursor__label {
+  width: 92px;
+  margin: -0.6em 0 0 -46px;
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cursor.is-label .cursor__label {
+  opacity: 1;
+}
+
+/* Split text helpers */
+.split-line {
+  padding-bottom: 0.06em;
+}
+.split-char {
+  display: inline-block;
+  will-change: transform;
+}
